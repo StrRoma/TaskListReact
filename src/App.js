@@ -1,22 +1,29 @@
 import React from 'react';
+import './App.css';
+
+
 
 class Task extends React.Component{
   constructor(props) {
     super(props);
-
     this.state = {
-      data: null,
+      data: this.props.data,
     }
+  }
+
+
+  inputChange(){
+    //TODO
   }
 
   render(){
     return (
-      <div claccName="task-input">
+      <div className="task-input">
         <input
-          onChage={this.inputChange}
-          value={this.props.task}
+          onChange={this.inputChange}
+          value={this.state.data}
         />
-        <button onClick={this.props.delete} key={this.props.index}>DELETE</button>
+        <button onClick={() => this.props.delete(this.props.index)}>DELETE</button>
       </div>
     )
   }
@@ -30,7 +37,10 @@ class Task extends React.Component{
       input: ''
     };
 
-    this.onChage = this.onChage.bind(this);
+    this.onCha
+    
+    
+    ge = this.onChage.bind(this);
   }
 
   addinput = () => {
@@ -66,17 +76,17 @@ class App extends React.Component {
 
       this.state = {
         tasks: [0,1,2,3,4,5],
-        input: ''
+        addData: '',
       };
 
       this.delete = this.delete.bind(this);
       this.add = this.add.bind(this);
-      //this.onChage = this.onChage.bind(this);
+      this.onChange = this.onChange.bind(this);
   }
 
-  delete(event) {
+  delete(index) {
     let tasks = this.state.tasks;
-    tasks.splice(event.target.key, 1);
+    tasks.splice(index, 1);
     this.setState({
       tasks: tasks,
     });
@@ -84,34 +94,33 @@ class App extends React.Component {
 
   add(e) {
     let tasks = this.state.tasks;
-    let input = e.target.value;
     tasks.push(tasks.length);
     this.setState({
       tasks: tasks,
-      data: input
     });
   };
 
   onChange(e) {
     //this.state.input= e.target.value;
-    this.setState({data: e.target.value});
+    this.setState({addData: e.target.value});
   };
 
   render() {
     return(
       <div className="App">
         <h1 className="top">Tasks in work: </h1>
-        <div1 claccName="task-input">
+        <div className="task-input">
           <input
-            onChage={this.onChange}
+            onChange={this.onChange}
             value={this.state.data}
           />
           <button onClick={this.add} value={this.state.input}>ADD</button>
-        </div1>
+        </div>
         {this.state.tasks.map((task,index) => (
-          <Task 
+          <Task
+            data={this.state.addData}
+            key= {index}
             task={task}
-            index={index}
             delete={this.delete} 
           />
         ))}
