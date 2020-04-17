@@ -16,6 +16,7 @@ code {
 * {
   transition: 0.3s all;
   user-select: none;
+  background-color: #b19ddf;
   
 }
 
@@ -24,29 +25,38 @@ code {
 }
 
 .App {
+  background-color: #3f3160;
   border-radius: 15px;
   display: flex;
+  min-height:500px;
+  width: 450px;
   flex-direction: column;
   justify-content: center;
   align-content: center;
   align-items: center;
+  margin: 40px auto;
+  
 }
 
 .top {
-  background: var(--text);
-  color: pink;
+  background: #3f3160;
+  color: #9372da;
   font-size: 30px;
-  margin: 0;
+  margin: 4px;
   font-weight: 500;
   
 }
 
 .task-input {
-  background-color: yellow;
-  color: red;
-  margin-top: 10px;
-  display: flex;
-  padding: 5px;
+  background-color: rgba(27, 112, 137, 1);
+  border: 0; 
+  color: #fff;
+  width: 300px;
+  height: 50px;
+  margin: 16px;
+  padding:  0 56px;
+  font-size: 32px;
+  border-radius: 10px;
 }
 
 .task-input * {
@@ -54,28 +64,27 @@ code {
 }
 
 .task-input input {
-  width: 100%;
+  width: 330px;
   border: none;
   padding: 5px;
   font-size: 18px;
   font-weight: 500;
-  color: var(--text);
+  color: rgba(255, 255, 255, 0.5);
+  margin: -50px;
 }
 
 .task-input button {
-  background-color: #f80808;
-  border: none;
-  font-size: 12px;
-  text-transform: uppercase;
-  color: #ffff;
+  height: 40px;
+  width: 60px;
+  border-radius: 5px;
+  border: 10;
+  background-color:rgba(202, 156, 24, 1); 
   cursor: pointer;
-  margin-left: 16px;
-  position: absolute;
-  right: 10px;
 }
 
 .task:hover {
-  background-color: yellow;
+  background-color: green;
+  
 }
 
 .task p {

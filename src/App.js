@@ -1,19 +1,17 @@
 import React from 'react';
 import './App.css';
 
-
-
 class Task extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
       data: this.props.data,
     }
+    this.inputChange = this.inputChange.bind(this);
   }
 
-
-  inputChange(){
-    //TODO
+  inputChange(e){
+    this.setState({data: e.target.value});
   }
 
   render(){
@@ -28,47 +26,6 @@ class Task extends React.Component{
     )
   }
 };
-
-/*class TaskInput extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      input: ''
-    };
-
-    this.onCha
-    
-    
-    ge = this.onChage.bind(this);
-  }
-
-  addinput = () => {
-    const {input} = this.state;
-    if (input) {
-      this.props.add(input);
-      this.setState({input: ''});
-    }
-  };
-
-  inputChange = event => {
-    this.setState({data: event.target.value});
-  };
-
-  render() {
-    const {input} = this.state;
-
-    return(
-      <div claccName="task-input">
-        <input
-          onChage={this.onChange}
-          value={this.state.data}
-        />
-        <button onClick={this.addinput}>ADD</button>
-      </div>
-    );
-  }
-}*/
 
 class App extends React.Component {
   constructor(props) {
@@ -101,7 +58,6 @@ class App extends React.Component {
   };
 
   onChange(e) {
-    //this.state.input= e.target.value;
     this.setState({addData: e.target.value});
   };
 
@@ -114,12 +70,13 @@ class App extends React.Component {
             onChange={this.onChange}
             value={this.state.data}
           />
-          <button onClick={this.add} value={this.state.input}>ADD</button>
+          <button onClick={this.add} value={this.state.addData}>ADD</button>
         </div>
         {this.state.tasks.map((task,index) => (
           <Task
             data={this.state.addData}
-            key= {index}
+            index={index}
+            key={index}
             task={task}
             delete={this.delete} 
           />
